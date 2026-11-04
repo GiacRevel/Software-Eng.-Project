@@ -1,0 +1,58 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: mydbristorante
+-- ------------------------------------------------------
+-- Server version	8.0.36
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `fattura`
+--
+
+DROP TABLE IF EXISTS `fattura`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fattura` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `DataEOraFattura` datetime DEFAULT NULL,
+  `IDCameriere` int DEFAULT NULL,
+  `IDOrdinazione` int DEFAULT NULL,
+  `Ricavo` float DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `IDCameriere` (`IDCameriere`),
+  KEY `IDOrdinazione` (`IDOrdinazione`),
+  CONSTRAINT `fattura_ibfk_1` FOREIGN KEY (`IDCameriere`) REFERENCES `cameriere` (`ID`),
+  CONSTRAINT `fattura_ibfk_2` FOREIGN KEY (`IDOrdinazione`) REFERENCES `ordinazione` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fattura`
+--
+
+LOCK TABLES `fattura` WRITE;
+/*!40000 ALTER TABLE `fattura` DISABLE KEYS */;
+INSERT INTO `fattura` VALUES (2,'2024-05-17 19:04:22',1,10,13),(3,'2024-05-17 19:06:35',1,11,6),(4,'2024-05-17 19:07:50',1,12,9),(5,'2024-05-17 19:08:22',1,13,9),(6,'2024-05-17 19:09:30',1,9,44),(7,'2024-05-17 19:14:53',1,14,6),(8,'2024-05-17 19:15:55',1,15,15),(9,'2024-05-17 19:17:46',1,16,6),(10,'2024-05-21 15:14:42',1,19,76),(11,'2024-05-21 15:17:29',1,21,13),(12,'2024-05-21 15:17:34',1,20,16),(13,'2024-05-21 15:17:42',1,23,30),(14,'2024-05-21 15:17:48',1,24,2),(15,'2024-05-24 16:23:26',1,25,90);
+/*!40000 ALTER TABLE `fattura` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-05-26 11:47:53
